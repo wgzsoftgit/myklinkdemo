@@ -1,0 +1,44 @@
+启动
+进入bin目录：cd /root/kingyifan/flink/flink-1.7.2/bin/
+启动flink：./start-cluster.sh
+阿里云服务器需要
+进入配置iptables：vi /etc/sysconfig/iptables
+增加：-A INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
+重启防火墙：service iptables restart
+访问ui界面：192.168.241.134:8081
+
+启动一个终端（端口随意）：nc -lk 8888      //输入数据
+启动二个终端（进入bin目录：cd /root/kingyifan/flink/flink-1.7.2/
+命令：bin/flink run examples/streaming/SocketWindowWordCount.jar --port 8888
+打开第三个会话：
+进入log目录：cd /root/kingyifan/flink/flink-1.7.2/log
+命令：tail -f flink-root-taskexecutor-5-localhost.localdomain.out（不一定是这个日志文件）
+
+
+
+env.fromElements("Please count", "the words", "but not this"); 
+DataSet<String> letters = env.fromCollection(Arrays.asList("a", "b", "c"));
+
+env.socketTextStream("192.168.220.128", port, "\n");操作服务器实时的数据流
+//将尝试读取本地文件。如果要从HDFS读取文件，则需要指定hdfs://协议
+env.readCsvFile("hdfs:///path/to/file.txt")
+env.readTextFile("file:///path/to/file"); 读取文件内容 逐行读取文件中的行并返回类型的数据集的方法String
+//flink还支持CSV文件，但在这种情况下，它不会返回字符串数据集。它将尝试解析每一行并返回Tuple实例的数据集：
+DataSet<Tuple2<Long, String>> lines = env.readCsvFile("data.csv")
+
+
+
+现在到数据处理部分！如何实现处理数据的算法？为此，您可以使用许多类似于Java 8流操作的操作，例如
+map - 使用用户定义的函数转换数据集中的项目。每个输入元素都转换为一个输出元素
+filter - 根据用户定义的函数过滤数据集中的项目
+flatMap - 类似于map运算符，但允许返回零个，一个或多个元素
+groupBy - 按键分组元素。类似于GROUP BYSQL中的运算符
+project - 选择元组数据集中的指定字段，类似于SELECTSQL中的运算符
+reduce - 使用用户定义的函数将数据集中的元素组合成单个值
+Java流与这些操作之间的最大区别在于，Java 8可以处理内存中的数据并可以访问本地数据，而Flink可以处理分布式环境中群集上的数据。
+                .types(Long.class, String.class);
+                
+要将数据写入文件，我们需要使用类中的writeAsText方法DataSet：
+DataSet<Integer> ds = ...
+ 
+ds.writeAsText("path/to/file");
