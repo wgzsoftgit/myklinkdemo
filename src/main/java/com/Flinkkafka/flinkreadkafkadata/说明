@@ -1,0 +1,9 @@
+本例模拟中将集成Kafka与Flink：Flink实时从Kafka中获取消息，每隔10秒去统计机器当前可用的内存数并将结果写入到本地文件中或者打印出来
+代码主要由两部分组成：
+MessageSplitter类、MessageWaterEmitter类和KafkaMessageStreaming类：Flink
+streaming实时处理Kafka消息类
+KafkaProducerTest类和MemoryUsageExtrator类：构建Kafka测试消息
+本例中，Kafka消息格式固定为：时间戳,主机名,当前可用内存数。其中主机名固定设置为machine-1，而时间戳和当前可用内存数都是动态获取。
+由于本例只会启动一个Kafka producer来模拟单台机器发来的消息，因此在最终的统计结果中只会统计machine-1这一台机器的内存。
+下面我们先来看完整代码实现。
+原文链接：https://blog.csdn.net/weixin_41939278/article/details/82803773

@@ -1,0 +1,3 @@
+connect操作在spark那里是没有的，所以稍微看一下，它与union类似，但是只能连接两个流，两个流的数据类型可以不同，
+从而两个流中的数据应用不同的处理方法， CoMapFunction和MapFunction的区别就是从对一个流的数据处理变成了两个流（注意也只能是两个）的处理而已。
+链接：https://juejin.im/post/5e7018c46fb9a07ccd51a547

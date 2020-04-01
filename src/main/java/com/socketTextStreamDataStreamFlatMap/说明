@@ -1,0 +1,5 @@
+DataStream
+Flink就是真正意义上的实时处理，来一条处理一条，而且你会发现，在Spark中需要使用updateStateByKey或者mapWithState高级算子才能实现的累加，
+在Flink中可以很方便地去完成
+正是因为官网所说的：Flink是一个有状态的数据流
+以，state（状态）才是我们学习Flink的一大重点。之后我们会陆续说明

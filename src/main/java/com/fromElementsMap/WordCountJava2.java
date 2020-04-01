@@ -1,4 +1,4 @@
-package com;
+package com.fromElementsMap;
 
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.FlatMapFunction;
@@ -9,7 +9,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.util.Collector;
 
 
-//离线计算
+//离线计算   map
 //它创建一个数字数据集，对每个数字进行平方并过滤掉所有奇数
 public class WordCountJava2 {
     public static void main(String[] args) throws Exception {
@@ -18,7 +18,7 @@ public class WordCountJava2 {
         //通过字符串构建数据集
         DataSet<Integer> numbers = env.fromElements(1, 2, 3, 4, 5, 6, 7);
         
-     // Square every number
+     //  map 操作类似 MapReduce 中的 map，对数据进行解析，
      DataSet<Integer> result = numbers.map(new MapFunction<Integer, Integer>() {
          @Override
          public Integer map(Integer integer) throws Exception {

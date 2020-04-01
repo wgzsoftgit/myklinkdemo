@@ -1,4 +1,4 @@
-package com;
+package com.socketTextStreamDataStreamFlatMap;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -36,7 +36,7 @@ public class StreamingWindowWordCountJava {
             }
         }
     })//打平操作，把每行的单词转为<word,count>类型的数据
-            //针对相同的word数据进行分组
+            //针对相同的word数据进行分组                 分组
             .keyBy("word")
             //指定计算数据的窗口大小和滑动窗口大小
             .timeWindow(Time.seconds(2),Time.seconds(1))

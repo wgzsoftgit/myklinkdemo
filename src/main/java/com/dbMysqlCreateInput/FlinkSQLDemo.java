@@ -1,4 +1,4 @@
-package com.db;
+package com.dbMysqlCreateInput;
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.DataSet;

@@ -1,0 +1,8 @@
+ Flink之Counter
+Accumulator即累加器，与Mapreduce counter的应用场景差不多，都能很好地观察task在运行期间的数据变化
+可以在Flink job任务中的算子函数中操作累加器，但是只能在任务执行结束之后才能获得累加器的最终结果。
+Counter是一个具体的累加器(Accumulator)实现
+IntCounter, LongCounter 和 DoubleCounter
+
+链接：https://juejin.im/post/5e7018c46fb9a07ccd51a547
+到这里批处理的算子也提的差不多了，有兴趣的朋友就可以把代码复制上去跑跑看看，没兴趣的话，那也没事，反正现在基本都是用实时的算子，不太影响

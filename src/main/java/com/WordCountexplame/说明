@@ -1,0 +1,25 @@
+<dependencies>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-java</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.11</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_2.11</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+    </dependencies>
+    
+    首先打包成JAR包，这里需要使用-c指定main函数：
+
+flink run -c WordCount WordCount.jar
+可以直接在/usr/local/flink/examples/streaming中运行WordCount程序
+
+
+DataSet
